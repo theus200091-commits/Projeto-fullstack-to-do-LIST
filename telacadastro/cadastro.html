@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro - To Do XP</title>
+
+    <link rel="stylesheet" href="cadastro.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>To-Do XP</h1>
+
+        <div class="header-right">
+
+            <a href="../telalogin/login.html">
+
+                <button class="login-btn">
+                    Login
+                </button>
+
+            </a>
+            
+            <a href="../Telainicial/inicial.html">
+
+                <button class="login-btn">
+                    Inicio
+                </button>
+
+            </a>
+
+        </div>
+
+    </header>
+
+    <main class="container">
+
+    <div class="cadastro-box">
+
+        <h2>Criar Conta</h2>
+
+        <form id="formCadastro">
+
+            <input
+                type="text"
+                id="nome"
+                placeholder="Seu nome"
+                required
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Seu email"
+                required
+            >
+
+            <input
+                type="password"
+                id="senha"
+                placeholder="Sua senha"
+                required
+            >
+
+            <input
+                type="password"
+                id="confirmarSenha"
+                placeholder="Confirmar senha"
+                required
+            >
+
+            <button
+                type="submit"
+                class="cadastro-btn"
+            >
+                Cadastrar
+            </button>
+
+        </form>
+
+        <p id="mensagem"></p>
+
+    </div>
+
+    <a href="../Telainicial/inicial.html">
+
+        <button class="voltar-btn">
+            Voltar
+        </button>
+
+    </a>
+
+</main>
+
+    <script src="cadastro.js"></script>
+
+</body>
+
+</html>

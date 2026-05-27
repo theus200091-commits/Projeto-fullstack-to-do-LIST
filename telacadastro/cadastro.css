@@ -1,0 +1,223 @@
+/* RESET */
+
+* {
+
+  text-decoration: none;
+
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+
+  font-family: Arial, sans-serif;
+}
+
+/* BODY */
+
+body {
+
+  background: #0f172a;
+
+  color: white;
+
+  padding: 20px;
+}
+
+/* HEADER */
+
+  header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+  }
+
+  /* TÍTULO */
+
+  h1 {
+
+    font-size: 28px;
+  }
+
+  /* HEADER RIGHT */
+
+  .header-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+  }
+
+  /* LINKS */
+
+  a {
+
+    color: white;
+  }
+
+/* BOTÃO LOGIN */
+
+.login-btn {
+
+  padding: 10px 20px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #22c55e;
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  font-weight: bold;
+}
+
+.login-btn:hover {
+
+  background: #16a34a;
+}
+
+/* CONTAINER */
+
+.container {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  margin-top: 60px;
+
+  gap: 20px;
+}
+/* BOX CADASTRO */
+
+.cadastro-box {
+
+  width: 100%;
+
+  max-width: 400px;
+
+  background: #1e293b;
+
+  padding: 30px;
+
+  border-radius: 12px;
+}
+
+/* TÍTULO BOX */
+
+.cadastro-box h2 {
+
+  text-align: center;
+
+  margin-bottom: 25px;
+}
+
+/* FORMULÁRIO */
+
+#formCadastro {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+/* INPUTS */
+
+#formCadastro input {
+
+  padding: 12px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  outline: none;
+}
+
+/* BOTÃO CADASTRAR */
+
+.cadastro-btn {
+
+  padding: 12px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #22c55e;
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  font-weight: bold;
+}
+
+.cadastro-btn:hover {
+
+  background: #16a34a;
+}
+
+/* MENSAGEM */
+
+#mensagem {
+
+  margin-top: 15px;
+
+  text-align: center;
+}
+
+/* ÁREA BOTÃO VOLTAR */
+
+.voltar-area {
+
+  display: flex;
+
+  justify-content: center;
+
+  margin-top: 20px;
+}
+
+/* BOTÃO VOLTAR */
+
+.voltar-btn {
+
+  padding: 10px 20px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #22c55e;
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  font-weight: bold;
+}
+
+.voltar-btn:hover {
+
+  background: #475569;
+}

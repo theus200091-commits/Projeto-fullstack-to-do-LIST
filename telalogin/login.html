@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - To Do XP</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+  <header>
+    <div class="header-right">
+      <a href="../telacadastro/cadastro.html">
+        <button class="login-btnn">
+         Cadastrar
+        </button>
+      </a>
+
+      <a href="../Telainicial/inicial.html">
+        <button class="login-btnn">
+          Inicio
+        </button>
+      </a>
+    </div>
+  </header>
+  <div class="login-container">
+    <h1>To-Do XP</h1>
+    <p>Faça login para continuar</p>
+
+    <div class="xp-bar">
+      <div class="xp"></div>
+    </div>
+
+    <div id="mensagem" style="margin: 10px 0; font-weight: bold;"></div>
+
+    <div class="input-group">
+      <label>Email</label>
+      <input type="email" id="inputEmail" placeholder="Digite seu email">
+    </div>
+
+    <div class="input-group">
+      <label>Senha</label>
+      <input type="password" id="inputSenha" placeholder="Digite sua senha">
+    </div>
+
+    <button class="login-btn" onclick="entrarConta()">Entrar</button>
+  </div>
+
+  <button class="voltar-btn">
+    <a href="../Telainicial/inicial.html">Voltar</a>
+  </button>
+
+  <script src="login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+/* RESET */
+* {text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* BODY */
+
+body {
+  background: #0f172a;
+  color: white;
+  padding: 20px;
+}
+/* HEADER RIGHT */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* BOTÃO LOGIN */
+a{color: white;}
+.login-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+
+  background: #22c55e;
+  color: white;
+
+  cursor: pointer;
+  transition: 0.3s;
+
+  font-weight: bold;
+}
+
+.login-btn:hover {
+  background: #16a34a;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+/* RANK */
+.rank {
+  text-align: right;
+}
+
+.xp-bar {
+  width: 200px;
+  height: 10px;
+  background: #1e293b;
+  border-radius: 10px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.xp {
+  width: 20%; /* depois você controla com JS */
+  height: 100%;
+  background: linear-gradient(to right, #22c55e, #4ade80);
+}
+
+/* INPUT */
+.input-area {
+  display: flex;
+  width: 15%;
+  gap: 10px;
+  margin-bottom: 20px;
+  margin-left: 25%;
+  
+}
+
+.input-area input {
+  flex: 1;
+  
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.input-area button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #22c55e;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+
+.input-area button:hover {
+  background: #16a34a;
+}
+
+/* BOARD */
+.board {
+  display: flex;
+  width: 65%;
+  gap: 20px;
+}
+
+/* COLUNAS */
+.coluna {
+  flex: 1;
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 10px;
+  min-height: 300px;
+}
+
+.coluna h2 {
+  margin-bottom: 10px;
+}
+
+/* LISTA */
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* BOTÃO CADASTRO */
+
+.cadastro-btn {
+
+  padding: 10px 20px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #22c55e;
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  font-weight: bold;
+}
+
+.cadastro-btn:hover {
+
+  background: #16a34a;
+}
+
+/* BOTÃO LOGOUT */
+.logout-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #ef4444;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
+
+.voltar-btn{padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #22c55e;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+  
+}
