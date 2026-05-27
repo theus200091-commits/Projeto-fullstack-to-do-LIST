@@ -1,7 +1,5 @@
-```js id="qk9r7v"
-// ===============================
+
 // VERIFICAR LOGIN
-// ===============================
 
 function verificarLogin() {
 
@@ -13,77 +11,53 @@ function verificarLogin() {
     const headerLogado =
     document.getElementById('headerLogado');
 
-    const inputArea =
-    document.querySelector('.input-area');
-
-    const board =
-    document.querySelector('.board');
-
     if (token) {
 
         headerNaoLogado.style.display = 'none';
-
         headerLogado.style.display = 'flex';
-
-        inputArea.style.display = 'block';
-
-        board.style.display = 'grid';
 
         try {
 
             const payload =
-            JSON.parse(atob(token.split('.')[1]));
+            JSON.parse(
+                atob(token.split('.')[1])
+            );
 
-            document.getElementById('usuarioNome')
-            .innerHTML =
-            `Bem - vindo! ${ payload.email } `;
+            document.getElementById(
+                'usuarioNome'
+            ).innerHTML =
+            `Bem-vindo! ${payload.email}`;
 
         }
 
         catch (e) {
 
-            console.log('Erro ao decodificar token');
+            console.log(e);
 
         }
 
     }
 
-    else {
-
-        headerNaoLogado.style.display = 'flex';
-
-        headerLogado.style.display = 'none';
-
-        inputArea.style.display = 'none';
-
-        board.style.display = 'none';
-
-    }
-
 }
 
-
-// ===============================
 // LOGOUT
-// ===============================
 
 function logout() {
 
     localStorage.removeItem('token');
-
-    alert('Logout realizado!');
 
     window.location.href =
     '../telalogin/login.html';
 
 }
 
+verificarLogin();
 
-// ===============================
-// ELEMENTOS HTML
-// ===============================
+// LISTAS
 
-let tarefas = [];
+let adicionarArray = [];
+let fazendoArray = [];
+let feitoArray = [];
 
 let listaFazer =
 document.querySelector('#fazer .lista');
@@ -94,386 +68,151 @@ document.querySelector('#fazendo .lista');
 let listaFeito =
 document.querySelector('#feito .lista');
 
-let digiteTarefainput =
-document.getElementById('inputTarefa');
-
-
-// ===============================
 // BUSCAR TAREFAS
-// ===============================
 
 async function buscarTarefas() {
 
     try {
 
         const token =
-        localStorage.getItem("token");
+        localStorage.getItem('token');
 
-        const resposta = await fetch(
-            "http://localhost:3000/tarefas",
+        const resposta =
+        await fetch(
+            'http://localhost:3002/tarefas',
             {
 
                 headers: {
+
                     Authorization:
-                    `Bearer ${ token } `
+                    `Bearer ${token}`
+
                 }
 
             }
         );
 
-        tarefas = await resposta.json();
+        const tarefas =
+        await resposta.json();
 
-        renderizarTarefas();
+        adicionarArray =
+        tarefas.filter(
+            tarefa =>
+            tarefa.status === 'fazer'
+        );
+
+        fazendoArray =
+        tarefas.filter(
+            tarefa =>
+            tarefa.status === 'fazendo'
+        );
+
+        feitoArray =
+        tarefas.filter(
+            tarefa =>
+            tarefa.status === 'feito'
+        );
+
+        redenrizarTarefa();
+        redenrizarFazendo();
+        redenrizarFeito();
 
     }
 
-    catch (erro) {
+    catch (error) {
 
         console.log(
-            "Erro ao buscar tarefas",
-            erro
+            'Erro ao buscar tarefas',
+            error
         );
 
     }
 
 }
 
-
-// ===============================
-// RENDERIZAR TAREFAS
-// ===============================
-
-function renderizarTarefas() {
-
-    listaFazer.innerHTML = '';
-
-    listaFazendo.innerHTML = '';
-
-    listaFeito.innerHTML = '';
-
-    tarefas.forEach((tarefa) => {
-
-        // DIV PRINCIPAL
-        let div =
-        document.createElement('div');
-
-        div.style.height = "10%";
-
-        div.style.fontSize = "20px";
-
-        div.style.fontFamily = "Poppins";
-
-        div.style.marginBottom = "10px";
-
-        div.innerHTML = tarefa.titulo;
-
-
-        // =========================
-        // BOTÃO EDITAR
-        // =========================
-
-        let bEditar =
-        document.createElement('button');
-
-        bEditar.innerHTML = "Editar";
-
-        bEditar.style.marginLeft = "5%";
-
-        bEditar.style.padding = "1%";
-
-        bEditar.style.background =
-        "darkgrey";
-
-        bEditar.style.color = "white";
-
-        bEditar.onclick =
-        () => editarTarefa(tarefa._id);
-
-
-        // =========================
-        // BOTÃO FAZENDO
-        // =========================
-
-        let bFazendo =
-        document.createElement('button');
-
-        bFazendo.innerHTML = "Fazendo";
-
-        bFazendo.style.marginLeft = "2%";
-
-        bFazendo.style.padding = "1%";
-
-        bFazendo.style.background =
-        "yellow";
-
-        bFazendo.onclick =
-        () => atualizarStatus(
-            tarefa._id,
-            "fazendo"
-        );
-
-
-        // =========================
-        // BOTÃO FAZER
-        // =========================
-
-        let bFazer =
-        document.createElement('button');
-
-        bFazer.innerHTML = "Fazer";
-
-        bFazer.style.marginLeft = "2%";
-
-        bFazer.style.padding = "1%";
-
-        bFazer.style.background =
-        "#0f172a";
-
-        bFazer.style.color = "white";
-
-        bFazer.onclick =
-        () => atualizarStatus(
-            tarefa._id,
-            "fazer"
-        );
-
-
-        // =========================
-        // BOTÃO PRONTO
-        // =========================
-
-        let bPronto =
-        document.createElement('button');
-
-        bPronto.innerHTML = "Pronto";
-
-        bPronto.style.marginLeft = "2%";
-
-        bPronto.style.padding = "1%";
-
-        bPronto.style.background =
-        "green";
-
-        bPronto.style.color = "white";
-
-        bPronto.onclick =
-        () => atualizarStatus(
-            tarefa._id,
-            "feito"
-        );
-
-
-        // =========================
-        // BOTÃO REMOVER
-        // =========================
-
-        let bRemover =
-        document.createElement('button');
-
-        bRemover.innerHTML = "Remover";
-
-        bRemover.style.marginLeft = "2%";
-
-        bRemover.style.padding = "1%";
-
-        bRemover.style.background =
-        "red";
-
-        bRemover.style.color = "white";
-
-        bRemover.onclick =
-        () => removerTarefa(tarefa._id);
-
-
-        // =========================
-        // ADICIONAR BOTÕES
-        // =========================
-
-        div.appendChild(bEditar);
-
-        div.appendChild(bFazer);
-
-        div.appendChild(bFazendo);
-
-        div.appendChild(bPronto);
-
-        div.appendChild(bRemover);
-
-
-        // =========================
-        // STATUS
-        // =========================
-
-        if (tarefa.status === "fazer") {
-
-            listaFazer.appendChild(div);
-
-        }
-
-        else if (
-            tarefa.status === "fazendo"
-        ) {
-
-            listaFazendo.appendChild(div);
-
-        }
-
-        else if (
-            tarefa.status === "feito"
-        ) {
-
-            listaFeito.appendChild(div);
-
-        }
-
-    });
-
-}
-
-
-// ===============================
-// ADICIONAR TAREFA
-// ===============================
+// ADICIONAR
 
 async function adicionarFazer() {
 
-    let digiteTarefa =
-    digiteTarefainput.value;
+    const input =
+    document.getElementById(
+        'inputTarefa'
+    );
 
-    if (digiteTarefa.trim() === "") {
+    const titulo =
+    input.value;
 
-        alert(
-            'Digite uma tarefa válida'
+    if (titulo.trim() === '') {
+
+        return alert(
+            'Digite uma tarefa'
         );
-
-        return;
 
     }
 
     try {
 
         const token =
-        localStorage.getItem("token");
+        localStorage.getItem('token');
 
         await fetch(
-            "http://localhost:3000/tarefas",
+            'http://localhost:3002/tarefas',
             {
 
-                method: "POST",
+                method: 'POST',
 
                 headers: {
 
-                    "Content-Type":
-                    "application/json",
+                    'Content-Type':
+                    'application/json',
 
                     Authorization:
-                    `Bearer ${ token } `
+                    `Bearer ${token}`
 
                 },
 
                 body: JSON.stringify({
 
-                    titulo: digiteTarefa
+                    titulo
 
                 })
 
             }
         );
 
-        digiteTarefainput.value = "";
+        input.value = '';
 
         buscarTarefas();
 
     }
 
-    catch (erro) {
+    catch (error) {
 
-        console.log(
-            "Erro ao adicionar tarefa",
-            erro
-        );
+        console.log(error);
 
     }
 
 }
 
-
-// ===============================
-// ATUALIZAR STATUS
-// ===============================
-
-async function atualizarStatus(
-    id,
-    status
-) {
-
-    try {
-
-        const token =
-        localStorage.getItem("token");
-
-        await fetch(
-            `http://localhost:3000/tarefas/${id}`,
-{
-
-    method: "PUT",
-
-        headers: {
-
-        "Content-Type":
-        "application/json",
-
-            Authorization:
-        `Bearer ${token}`
-
-    },
-
-    body: JSON.stringify({
-
-        status: status
-
-    })
-
-}
-        );
-
-buscarTarefas();
-
-    }
-
-    catch (erro) {
-
-    console.log(
-        "Erro ao atualizar tarefa",
-        erro
-    );
-
-}
-
-}
-
-
-// ===============================
-// REMOVER TAREFA
-// ===============================
+// REMOVER
 
 async function removerTarefa(id) {
 
     try {
 
         const token =
-            localStorage.getItem("token");
+        localStorage.getItem('token');
 
         await fetch(
-            `http://localhost:3000/tarefas/${id}`,
+            `http://localhost:3002/tarefas/${id}`,
             {
 
-                method: "DELETE",
+                method: 'DELETE',
 
                 headers: {
 
                     Authorization:
-                        `Bearer ${token}`
+                    `Bearer ${token}`
 
                 }
 
@@ -484,33 +223,28 @@ async function removerTarefa(id) {
 
     }
 
-    catch (erro) {
+    catch (error) {
 
-        console.log(
-            "Erro ao remover tarefa",
-            erro
-        );
+        console.log(error);
 
     }
 
 }
 
+// EDITAR
 
-// ===============================
-// EDITAR TAREFA
-// ===============================
+async function editarTarefa(id, tituloAtual) {
 
-async function editarTarefa(id) {
-
-    let editar =
-        prompt('Edite a tarefa');
+    const novoTitulo =
+    prompt(
+        'Editar tarefa:',
+        tituloAtual
+    );
 
     if (
-        editar === null ||
-        editar.trim() === ""
+        !novoTitulo ||
+        novoTitulo.trim() === ''
     ) {
-
-        alert('Digite um valor válido');
 
         return;
 
@@ -519,27 +253,27 @@ async function editarTarefa(id) {
     try {
 
         const token =
-            localStorage.getItem("token");
+        localStorage.getItem('token');
 
         await fetch(
-            `http://localhost:3000/tarefas/${id}`,
+            `http://localhost:3002/tarefas/${id}`,
             {
 
-                method: "PUT",
+                method: 'PUT',
 
                 headers: {
 
-                    "Content-Type":
-                        "application/json",
+                    'Content-Type':
+                    'application/json',
 
                     Authorization:
-                        `Bearer ${token}`
+                    `Bearer ${token}`
 
                 },
 
                 body: JSON.stringify({
 
-                    titulo: editar
+                    titulo: novoTitulo
 
                 })
 
@@ -550,19 +284,277 @@ async function editarTarefa(id) {
 
     }
 
-    catch (erro) {
+    catch (error) {
 
-        console.log(
-            "Erro ao editar tarefa",
-            erro
-        );
+        console.log(error);
 
     }
 
 }
 
+// STATUS
 
-verificarLogin();
+async function atualizarStatus(
+    id,
+    novoStatus
+) {
+
+    try {
+
+        const token =
+        localStorage.getItem('token');
+
+        await fetch(
+            `http://localhost:3002/tarefas/${id}`,
+            {
+
+                method: 'PUT',
+
+                headers: {
+
+                    'Content-Type':
+                    'application/json',
+
+                    Authorization:
+                    `Bearer ${token}`
+
+                },
+
+                body: JSON.stringify({
+
+                    status: novoStatus
+
+                })
+
+            }
+        );
+
+        buscarTarefas();
+
+    }
+
+    catch (error) {
+
+        console.log(error);
+
+    }
+
+}
+
+// RENDER FAZER
+
+function redenrizarTarefa() {
+
+    listaFazer.innerHTML = '';
+
+    adicionarArray.forEach((item) => {
+
+        let div =
+        document.createElement('div');
+
+        let bEditar =
+        document.createElement('button');
+
+        let bRemover =
+        document.createElement('button');
+
+        let bFazendo =
+        document.createElement('button');
+
+        let bPronto =
+        document.createElement('button');
+
+        div.innerHTML =
+        item.titulo;
+
+        bEditar.innerHTML =
+        'Editar';
+
+        bEditar.onclick = () =>
+        editarTarefa(
+            item._id,
+            item.titulo
+        );
+
+        bRemover.innerHTML =
+        'Remover';
+
+        bRemover.onclick = () =>
+        removerTarefa(
+            item._id
+        );
+
+        bFazendo.innerHTML =
+        'Fazendo';
+
+        bFazendo.onclick = () =>
+        atualizarStatus(
+            item._id,
+            'fazendo'
+        );
+
+        bPronto.innerHTML =
+        'Pronto';
+
+        bPronto.onclick = () =>
+        atualizarStatus(
+            item._id,
+            'feito'
+        );
+
+        div.appendChild(bEditar);
+        div.appendChild(bRemover);
+        div.appendChild(bFazendo);
+        div.appendChild(bPronto);
+
+        listaFazer.appendChild(div);
+
+    });
+
+}
+
+// RENDER FAZENDO
+
+function redenrizarFazendo() {
+
+    listaFazendo.innerHTML = '';
+
+    fazendoArray.forEach((item) => {
+
+        let div =
+        document.createElement('div');
+
+        let bEditar =
+        document.createElement('button');
+
+        let bRemover =
+        document.createElement('button');
+
+        let bFazer =
+        document.createElement('button');
+
+        let bPronto =
+        document.createElement('button');
+
+        div.innerHTML =
+        item.titulo;
+
+        bEditar.innerHTML =
+        'Editar';
+
+        bEditar.onclick = () =>
+        editarTarefa(
+            item._id,
+            item.titulo
+        );
+
+        bRemover.innerHTML =
+        'Remover';
+
+        bRemover.onclick = () =>
+        removerTarefa(
+            item._id
+        );
+
+        bFazer.innerHTML =
+        'Fazer';
+
+        bFazer.onclick = () =>
+        atualizarStatus(
+            item._id,
+            'fazer'
+        );
+
+        bPronto.innerHTML =
+        'Pronto';
+
+        bPronto.onclick = () =>
+        atualizarStatus(
+            item._id,
+            'feito'
+        );
+
+        div.appendChild(bEditar);
+        div.appendChild(bRemover);
+        div.appendChild(bFazer);
+        div.appendChild(bPronto);
+
+        listaFazendo.appendChild(div);
+
+    });
+
+}
+
+// RENDER FEITO
+
+function redenrizarFeito() {
+
+    listaFeito.innerHTML = '';
+
+    feitoArray.forEach((item) => {
+
+        let div =
+        document.createElement('div');
+
+        let bEditar =
+        document.createElement('button');
+
+        let bRemover =
+        document.createElement('button');
+
+        let bFazer =
+        document.createElement('button');
+
+        let bFazendo =
+        document.createElement('button');
+
+        div.innerHTML =
+        item.titulo;
+
+        bEditar.innerHTML =
+        'Editar';
+
+        bEditar.onclick = () =>
+        editarTarefa(
+            item._id,
+            item.titulo
+        );
+
+        bRemover.innerHTML =
+        'Remover';
+
+        bRemover.onclick = () =>
+        removerTarefa(
+            item._id
+        );
+
+        bFazer.innerHTML =
+        'Fazer';
+
+        bFazer.onclick = () =>
+        atualizarStatus(
+            item._id,
+            'fazer'
+        );
+
+        bFazendo.innerHTML =
+        'Fazendo';
+
+        bFazendo.onclick = () =>
+        atualizarStatus(
+            item._id,
+            'fazendo'
+        );
+
+        div.appendChild(bEditar);
+        div.appendChild(bRemover);
+        div.appendChild(bFazer);
+        div.appendChild(bFazendo);
+
+        listaFeito.appendChild(div);
+
+    });
+
+}
 
 buscarTarefas();
-

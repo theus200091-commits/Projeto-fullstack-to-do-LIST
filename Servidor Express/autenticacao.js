@@ -171,15 +171,53 @@ export const login = async(req, res)=>{
     }
 }
 
-export const tarefasrotasToken = (req, res, next) => {
-    try { const token =req.headers.authorization.split(" ")[1]
-        if (!token){
-            return res.status(401).json({message:"Token não encontrado"})
+export const tarefasrotasToken = (
+    req,
+    res,
+    next
+) => {
+
+    try {
+
+        const authHeader =
+        req.headers.authorization;
+
+        // VERIFICAR SE HEADER EXISTE
+
+        if (!authHeader) {
+
+            return res.status(401).json({
+
+                message:
+                "Token não encontrado"
+
+            });
+
         }
-        const decodificar =jwt.verify(token, "senha_secreta_jwt")
-        req.usuario = decodificar
-        next()
-    } catch(error){
-        res.status(401).json({message:"Token inválido"})                                              
+
+        // PEGAR TOKEN
+
+        const token =
+        authHeader.split(" ")[1];
+
+        // VALIDAR TOKEN
+
+        const decodificar =
+        jwt.verify(
+            token,
+            "senha_secreta_jwt"
+        );
+
+
+        req.usuario =
+        decodificar;
+        next();
+    }
+
+    catch (error) {
+        return res.status(401).json({
+            message:
+            "Token inválido"
+        });
     }
 }
