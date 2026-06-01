@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do XP</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+ <header>
+
+  <h1 class="titulo">To-Do XP</h1>
+
+  <!-- VERSÃO NÃO LOGADO -->
+  <div class="header-right" id="headerNaoLogado">
+    <button class="login-btn">
+      <a href="telalogin/login.html">Login</a>
+    </button>
+    <button class="cadastro-btn">
+      <a href="telacadastro/cadastro.html">Cadastrar</a>
+    </button>
+    <button class="voltar-btn">
+      <a href="index.html">Voltar</a>
+    </button>
+    <div class="rank">
+      <span id="rankTexto">Rank: Bronze</span>
+
+      <div class="xp-bar">
+        <div class="xp"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- VERSÃO LOGADO -->
+  <div class="header-right" id="headerLogado" style="display: none;">
+    <span id="usuarioNome" style="font-weight: bold; margin-right: 20px;"></span>
+    <button class="logout-btn" onclick="logout()">Sair</button>
+    <div class="rank">
+      <span id="rankTextoLogado">Rank: Bronze</span>
+
+      <div class="xp-bar">
+        <div class="xp"></div>
+      </div>
+
+    </div>
+  </div>
+
+</header>
+
+  <section class="input-area">
+    <input type="text" id="inputTarefa" placeholder="Digite uma tarefa...">
+    <button id="btnAdicionar" onclick="adicionarFazer()">Adicionar</button>
+  </section>
+
+  <main class="board">
+
+    <div class="coluna" id="fazer">
+      <h2> Fazer</h2>
+       <div class="lista"></div>
+   
+    </div>
+
+    <div class="coluna" id="fazendo">
+      <h2> Fazendo</h2>
+       <div class="lista"></div>
+     
+    </div>
+
+    <div class="coluna" id="feito">
+      <h2> Feito</h2>
+     <div class="lista"></div>
+    </div>
+    <div class="coluna" id="historico">
+  <h2> Histórico</h2>
+  <div class="lista"></div>
+</div>
+
+  </main>
+  
+<script src="./script.js" defer></script>
+</body>
+</html>

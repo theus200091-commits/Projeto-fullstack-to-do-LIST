@@ -1,84 +1,129 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-  <meta charset="UTF-8">
-  <title>To-Do XP</title>
-  <link rel="stylesheet" href="./To%20do%20list/style.css">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sobre</title>
+
+    <link rel="stylesheet" href="./Telainicial/inicial.css">
+
+
 </head>
+
 <body>
 
- <header>
+    <header>
 
-  <h1 class="titulo">To-Do XP</h1>
+        <h1>To Do List</h1>
 
-  <!-- VERSÃO NÃO LOGADO -->
-  <div class="header-right" id="headerNaoLogado">
-    <button class="login-btn">
-      <a href="telalogin/login.html">Login</a>
-    </button>
-    <button class="cadastro-btn">
-      <a href="telacadastro/cadastro.html">Cadastrar</a>
-    </button>
-    <button class="voltar-btn">
-      <a href="Telainicial/inicial.html">Voltar</a>
-    </button>
-    <div class="rank">
-      <span id="rankTexto">Rank: Bronze</span>
+        <div class="header-buttons">
 
-      <div class="xp-bar">
-        <div class="xp"></div>
-      </div>
+            <a href="telalogin/login.html" class="login-btn">
+                Login
+            </a>
 
-    </div>
+            <a href="telacadastro/cadastro.html" class="cadastro-btn">
+                Cadastrar
+            </a>
 
-  </div>
+        </div>
 
-  <!-- VERSÃO LOGADO -->
-  <div class="header-right" id="headerLogado" style="display: none;">
-    <span id="usuarioNome" style="font-weight: bold; margin-right: 20px;"></span>
-    <button class="logout-btn" onclick="logout()">Sair</button>
-    <div class="rank">
-      <span id="rankTextoLogado">Rank: Bronze</span>
+    </header>
+    <main class="sobre-container">
 
-      <div class="xp-bar">
-        <div class="xp"></div>
-      </div>
+        <section class="hero">
 
-    </div>
-  </div>
+            <h1>Organize sua rotina</h1>
 
-</header>
+            <p>
+                A To Do List foi criada para ajudar usuários
+                a organizarem tarefas, manterem produtividade
+                e acompanharem sua evolução diária.
+                Crie sua conta e comece a usar!
+            </p>
 
-  <section class="input-area">
-    <input type="text" id="inputTarefa" placeholder="Digite uma tarefa...">
-    <button id="btnAdicionar" onclick="adicionarFazer()">Adicionar</button>
-  </section>
+        </section>
 
-  <main class="board">
+        <section class="cards">
 
-    <div class="coluna" id="fazer">
-      <h2> Fazer</h2>
-       <div class="lista"></div>
-   
-    </div>
+            <div class="card">
 
-    <div class="coluna" id="fazendo">
-      <h2> Fazendo</h2>
-       <div class="lista"></div>
-     
-    </div>
+                <h2> Gerencie tarefas</h2>
 
-    <div class="coluna" id="feito">
-      <h2> Feito</h2>
-     <div class="lista"></div>
-    </div>
-    <div class="coluna" id="historico">
-  <h2> Histórico</h2>
-  <div class="lista"></div>
-</div>
+                <p>
+                    Crie, edite e organize suas <strong>TAREFAS</strong>
+                    de forma rápida e intuitiva.
+                </p>
 
-  </main>
-  
-<script src="./To%20do%20list/script.js" defer></script>
+            </div>
+            <div class="card">
+
+                <h2>Evolução diária</h2>
+
+                <p>
+                    Acompanhe sua produtividade
+                    e mantenha foco em suas <strong>METAS</strong>.
+                </p>
+
+            </div>
+            <div class="card">
+
+                <h2>Projeto pessoal</h2>
+
+                <p>Minha <strong>INTENÇÃO</strong> era criar uma aplicação com conceitos básicos, mas funcionais, para
+                    <strong>PORTFÓLIO</strong>!
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Sistema de login</h2>
+
+                <p>Sistema real de <strong>LOGIN, HISTÓRICO DE TAREFAS e RANK </strong>para cada usuário!
+                </p>
+
+            </div>
+            <div class="card">
+
+                <h2>Login seguro</h2>
+
+                <p>
+                    <strong>Sistema de AUTENTICAÇÃO com JWT</strong>
+                    para proteger os dados do usuário.
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <h2>Performance</h2>
+
+                <p>
+                    Aplicação construída com
+                    <strong>Node.js, Express, MongoDB e Mongoose</strong>.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+    </main>
+    <footer>
+        <p>
+            desenvolvido por Matheus Nunes.
+        </p>
+    </footer>
+
 </body>
+
 </html>

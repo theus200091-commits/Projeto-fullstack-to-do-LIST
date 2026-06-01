@@ -47,7 +47,7 @@ function logout() {
     localStorage.removeItem('token');
 
     window.location.href =
-    'telalogin/login.html';
+    '../telalogin/login.html';
 
 }
 
