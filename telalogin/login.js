@@ -28,7 +28,7 @@ function entrarConta(){
         mensagem.style.color = 'lightgreen';
         localStorage.setItem('token', dados.token);
         setTimeout(() => {
-          window.location.href = '../To do list/index.html';
+          window.location.href = '../index.html';
         }, 1500);
       } else {
         mensagem.innerText = dados.message || 'Erro ao fazer login';
