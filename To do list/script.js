@@ -79,7 +79,7 @@ async function buscarTarefas() {
 
         const resposta =
         await fetch(
-            'http://localhost:3002/tarefas',
+            'https://api.render.com/deploy/srv-d8i5j4btqb8s73aq5l1g?key=8w2R84nvTaE',
             {
 
                 headers: {

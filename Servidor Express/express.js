@@ -12,7 +12,22 @@ path.dirname(fileURLToPath(import.meta.url))
 
 const app = express()
 
-app.use(cors())
+app.use(
+    cors(
+        //{
+   // origin: [
+    //        "https://theus200091-commits.github.io"
+    //    ],
+   //     methods: [
+    //        'GET',
+    //        'POST',
+     //       'PUT',
+    //        'DELETE'
+     //   ],
+  //      credentials: true}
+ )
+)
+
 
 app.use(express.json())
 
