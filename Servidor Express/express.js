@@ -28,6 +28,7 @@ mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log('Mongo conectado'))
 .catch((error) => console.log(error))
 
-app.listen(3002, ()=>{
-    console.log("Servidor rodando")
+const PORT = process.env.PORT || 3002
+app.listen(PORT, ()=>{
+    console.log(`Servidor rodando na porta ${PORT}`)
 })
