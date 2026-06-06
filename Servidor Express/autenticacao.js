@@ -151,7 +151,7 @@ export const login = async(req, res)=>{
                 email: usuario.email
             },
 
-            "senha_secreta_jwt",
+           process.env.JWT_SECRET,
 
             {
                 expiresIn:"7d"
@@ -205,7 +205,7 @@ export const tarefasrotasToken = (
         const decodificar =
         jwt.verify(
             token,
-            "senha_secreta_jwt"
+           process.env.JWT_SECRET
         );
 
 
