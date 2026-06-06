@@ -11,7 +11,7 @@ function entrarConta(){
   }
 
   try {
-    fetch('http://localhost:3002/login', {
+    fetch('https://projeto-fullstack-to-do-list.onrender.com/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

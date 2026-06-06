@@ -79,7 +79,7 @@ async function buscarTarefas() {
 
         const resposta =
         await fetch(
-            'https://api.render.com/deploy/srv-d8i5j4btqb8s73aq5l1g?key=8w2R84nvTaE',
+            'https://projeto-fullstack-to-do-list.onrender.com/tarefas',
             {
 
                 headers: {
@@ -156,7 +156,7 @@ async function adicionarFazer() {
         localStorage.getItem('token');
 
         await fetch(
-            'http://localhost:3002/tarefas',
+            'https://projeto-fullstack-to-do-list.onrender.com/tarefas',
             {
 
                 method: 'POST',
@@ -204,7 +204,7 @@ async function removerTarefa(id) {
         localStorage.getItem('token');
 
         await fetch(
-            `http://localhost:3002/tarefas/${id}`,
+            `https://projeto-fullstack-to-do-list.onrender.com/tarefas/${id}`,
             {
 
                 method: 'DELETE',
@@ -256,7 +256,7 @@ async function editarTarefa(id, tituloAtual) {
         localStorage.getItem('token');
 
         await fetch(
-            `http://localhost:3002/tarefas/${id}`,
+            `https://projeto-fullstack-to-do-list.onrender.com/tarefas/${id}`,
             {
 
                 method: 'PUT',
@@ -305,7 +305,7 @@ async function atualizarStatus(
         localStorage.getItem('token');
 
         await fetch(
-            `http://localhost:3002/tarefas/${id}`,
+            `https://projeto-fullstack-to-do-list.onrender.com/tarefas/${id}`,
             {
 
                 method: 'PUT',

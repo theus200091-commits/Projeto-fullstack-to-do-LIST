@@ -27,7 +27,7 @@ form.addEventListener('submit', async (event) => {
     try {
 
         const resposta = await fetch(
-            'http://localhost:3002/autenticacao',
+            'https://projeto-fullstack-to-do-list.onrender.com/autenticacao',
             {
 
                 method: 'POST',
